@@ -10,6 +10,10 @@ function deObjetoAmatriz(objeto){
       C: 3
     }) ➞ [["D", 1], ["B", 2], ["C", 3]]*/
   //Escribe tu código aquí
+  objectToArray = Object.entries(objeto)
+
+  return objectToArray;
+
 }
 
 
@@ -18,14 +22,75 @@ function numberOfCharacters(string) {
   //en formato par clave-valor.
   //Ej: Recibe ---> "adsjfdsfsfjsdjfhacabcsbajda" || Devuelve ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 } 
   //Escribe tu código aquí
+  const str2 = string;
+  const strToArray = []
+  const objFinal = {}
+  
+  let sortStr = ''
+  let contador = 0
+  let valorCharAt = 0
+  
+
+  for(let z=0; z<str2.length; z++){
+    strToArray.push(str2[z])
+  } 
+  strToArray.sort()
+  strToArray.forEach(elemento => sortStr = sortStr + elemento)
+  
+  for(valorCharAt; valorCharAt<sortStr.length; valorCharAt++){
+  
+    for(let i=0; i<sortStr.length; i++){
+      if(sortStr.charAt(valorCharAt) === sortStr[i]){
+      contador++
+      }
+    }
+    objFinal[`${sortStr.charAt(valorCharAt)}`] = contador
+    valorCharAt = valorCharAt + (contador-1)
+    contador = 0
+  }
+
+  return objFinal
+
 }
 
 
 function capToFront(s) {
-  //Realiza una función que reciba como parámetro un string y mueva todas las letras mayúsculas
-  //al principio de la palabra.
-  //Ejemplo: soyHENRY -> HENRYsoy
-  //Escribe tu código aquí
+  let strRecibido = s
+  let strUperCase = ''
+  let strLowerCase = ''
+  let strMayusculas = ''
+  let strMinusculas = ''
+  let strFinal = ''
+  let cpaTemp = ''
+  let contador = 0
+  
+
+  strUperCase = strRecibido.toUpperCase()
+
+  for(let i=0; i<strRecibido.length; i++){
+    if(strRecibido[i].codePointAt() === strUperCase[i].codePointAt()){
+      cpaTemp = strRecibido[i]
+      contador++
+      strMayusculas = strMayusculas + cpaTemp
+    }
+
+  }
+  
+  cpaTemp = ''
+  contador = 0
+  strLowerCase = strRecibido.toLocaleLowerCase()
+
+  for(let a=0; a<strRecibido.length; a++){
+    if(strRecibido[a].codePointAt() === strLowerCase[a].codePointAt()){
+      cpaTemp = strRecibido[a]
+      contador++
+      strMinusculas = strMinusculas + cpaTemp
+    }
+  }
+
+  strFinal = strMayusculas + strMinusculas
+  
+  return strFinal
 }
 
 
@@ -35,6 +100,32 @@ function asAmirror(str) {
   //pero con cada una de sus palabras invertidas, como si fuera un espejo.
   //Ej: Recibe ---> "The Henry Challenge is close!" || Devuelve ---> "ehT yrneH egnellahC si !esolc"
   //Escribe tu código aquí
+const strRecibida = str
+let arrayFinal = [];
+let arrayFrom = Array.from(strRecibida);
+let strReverse = "";
+let strTemporal = "";
+let contador = 0;
+let strFinal = "";
+
+arrayFrom.reverse();
+strReverse = arrayFrom.join("");
+
+for (i = contador; i < strReverse.length; i++) {
+  if (strReverse[i] !== " ") {
+    strTemporal = strTemporal + strReverse[i];
+    contador++;
+  } else {
+    arrayFinal.unshift(strTemporal);
+    strTemporal = "";
+  }
+}
+
+arrayFinal.unshift(strTemporal);
+strFinal = arrayFinal.join(" ");
+
+return strFinal
+
 } 
 
 
