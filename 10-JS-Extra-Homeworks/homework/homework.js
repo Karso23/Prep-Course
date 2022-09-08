@@ -134,6 +134,25 @@ function capicua(numero){
   //La misma debe retornar: "Es capicua" si el número se número que se lee igual de 
   //izquierda a derecha que de derecha a izquierda. Caso contrario retorna "No es capicua"
   //Escribe tu código aquí
+  let numRecibido = numero;
+  let strNumero = numRecibido.toString();
+  let strOriginal = "";
+  let strReverse = "";
+  const arrayNumOriginal = Array.from(strNumero);
+  const arrayNumReverse = [];
+
+  arrayNumOriginal.map((a) => arrayNumReverse.push(a));
+  arrayNumReverse.reverse();
+
+  strOriginal = arrayNumOriginal.join("");
+  strReverse = arrayNumReverse.join("");
+
+  if (strOriginal === strReverse) {
+    return `Es capicua`;
+  } else {
+    return `No es capicua`;
+  }
+
 }
 
 
@@ -141,6 +160,34 @@ function deleteAbc(cadena){
   //Define una función que elimine las letras "a", "b" y "c" de la cadena dada 
   //y devuelva la versión modificada o la misma cadena, en caso de contener dichas letras.
   //Escribe tu código aquí
+  const strUsuario = cadena;
+  const arrayStrUsuario = Array.from(strUsuario);
+  const arraySliceA = [];
+  const arraySliceB = [];
+  let abcOff = "";
+  let arraySliceC = [];
+
+    for (let i = 0; i < arrayStrUsuario.length; i++) {
+      if (arrayStrUsuario[i] !== "a") {
+        arraySliceA.push(arrayStrUsuario[i]);
+      }
+    }
+
+    for (let i = 0; i < arraySliceA.length; i++) {
+      if (arraySliceA[i] !== "b") {
+        arraySliceB.push(arraySliceA[i]);
+      }
+    }
+
+    for (let i = 0; i < arraySliceB.length; i++) {
+      if (arraySliceB[i] !== "c") {
+        arraySliceC.push(arraySliceB[i]);
+      }
+    }
+ 
+  abcOff = arraySliceC.join("");
+  return abcOff;
+
 }
 
 
@@ -148,6 +195,18 @@ function sortArray(arr) {
   //La función recibe una matriz de strings. Ordena la matriz en orden creciente de longitudes de cadena
   //Ej: Recibe ---> ["You", "are", "beautiful", "looking"] || Devuelve ---> [“You", "are", "looking", "beautiful"]
   //Escribe tu código aquí
+
+const arraySort = arr
+
+arraySort.sort(function(a,b){
+ 
+
+  if (a.length < b.length) return -1 
+
+})
+
+return arraySort
+
 }
 
 
@@ -157,6 +216,48 @@ function buscoInterseccion(arreglo1, arreglo2){
   //Si no tienen elementos en común, retornar un arreglo vacío.
   //Aclaración: los arreglos no necesariamente tienen la misma longitud
   //Escribe tu código aquí  
+  const aUno = arreglo1
+  const aDos = arreglo2
+  const aInterseccion = []
+  const aVacio = []
+  let aLength = aUno.length
+  let bLength = aDos.length
+  let a = 0
+  let b = 0
+
+  aUno.sort((a,b) =>{
+    if (a > b) return 1
+  })
+  
+  
+  aDos.sort((a,b) =>{
+    if (a > b) return 1
+  })
+  
+
+  if (aLength >= bLength){
+    a = aLength
+    b = bLength
+  } else {
+    a = bLength
+    b = aLength
+  }
+
+  for (let i=0; i<a; i++){
+    for (let y=0; y<b; y++){
+      if(aUno[y] === aDos[i]){
+      aInterseccion.push(aUno[y])
+      }
+    }
+  }
+  
+
+  if (aInterseccion.length >= 0){
+    return aInterseccion
+  } else {
+    return aVacio
+  }
+
 }
 
 
